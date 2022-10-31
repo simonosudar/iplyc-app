@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:login_page/comm/com_helper.dart';
-import 'package:login_page/comm/gen_login_singup_field.dart';
-import 'package:login_page/comm/gen_text_form.dart';
+import 'package:login_page/comm/comm.dart';
 import 'package:login_page/database_helper/db_helper.dart';
 import 'package:login_page/model/user_model.dart';
-import 'package:login_page/screens/singup_form.dart';
+import 'package:login_page/screens/screens.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-import 'home_form.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -147,7 +143,7 @@ class _LoginFormState extends State<LoginForm> {
                             style: TextStyle(color: HexColor('29527A'))),
                         onPressed: () {
                           Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => HomeForm()));
+                              MaterialPageRoute(builder: (_) => SignupForm()));
                         },
                       )
                     ],

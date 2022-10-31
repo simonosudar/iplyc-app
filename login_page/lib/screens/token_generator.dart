@@ -32,14 +32,13 @@ class _CounterScreenState extends State<CounterScreen> {
     var minuto = DateTime.now().minute;
     int numbase = seed * minuto * minuto;
     double lnbase = log(numbase) * 1000000;
-    String strbase = lnbase.toString();
-    strbase = strbase.substring(1, 7);
-    strbase = strbase.split("").reversed.join("");
+    String strbase =
+        lnbase.toString().substring(1, 7).split("").reversed.join("");
     _counter = strbase;
   }
 
   CountDownController _controller = CountDownController();
-  String _counter = "Token";
+  String _counter = " ";
   var minutoinicio = DateTime.now().minute; //minuto inicial
   int segundoinicio = DateTime.now().second; //segundo inicial
   final int _duration = 60;
@@ -87,10 +86,10 @@ class _CounterScreenState extends State<CounterScreen> {
               style: const TextStyle(fontSize: 30),
             ),
             CircularCountDownTimer(
-              autoStart: true,
+              autoStart: false,
               width: MediaQuery.of(context).size.width / 2,
               height: MediaQuery.of(context).size.height / 2,
-              duration: _duration - segundoinicio,
+              duration: 0,
               fillColor: HexColor('#29527A'),
               ringColor: Colors.white,
               controller: _controller,
@@ -103,19 +102,28 @@ class _CounterScreenState extends State<CounterScreen> {
                 _controller.restart(duration: 60);
                 getId();
                 setState(() {});
-                ;
               },
             ),
-            FloatingActionButton(
-              backgroundColor: HexColor('#29527A'),
-              onPressed: () {
-                setState(() {
-                  var segundo = DateTime.now().second;
-                  _controller.restart(duration: 60 - segundo);
-                  getId();
-                });
-              },
-              child: Icon(Icons.refresh),
+            Container(
+              margin: EdgeInsets.all(30.0),
+              width: double.infinity,
+              child: TextButton(
+                child: Text(
+                  'Generar Token',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  setState(() {
+                    var segundo = DateTime.now().second;
+                    _controller.restart(duration: 60 - segundo);
+                    getId();
+                  });
+                },
+              ),
+              decoration: BoxDecoration(
+                color: HexColor('29527A'),
+                borderRadius: BorderRadius.circular(30.0),
+              ),
             ),
           ],
         ),

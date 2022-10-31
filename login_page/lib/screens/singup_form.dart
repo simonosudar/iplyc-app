@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:login_page/comm/com_helper.dart';
-import 'package:login_page/comm/gen_login_singup_field.dart';
-import 'package:login_page/comm/gen_text_form.dart';
+import 'package:login_page/comm/comm.dart';
 import 'package:login_page/database_helper/db_helper.dart';
 import 'package:login_page/model/user_model.dart';
-import 'package:login_page/screens/login_form.dart';
+import 'package:login_page/screens/screens.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class SignupForm extends StatefulWidget {

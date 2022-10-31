@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_page/screens/login_form.dart';
+import 'package:login_page/screens/screens.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 void main() {

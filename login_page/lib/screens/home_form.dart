@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:login_page/comm/com_helper.dart';
-import 'package:login_page/comm/gen_text_form.dart';
+import 'package:login_page/comm/comm.dart';
 import 'package:login_page/database_helper/db_helper.dart';
 import 'package:login_page/model/user_model.dart';
-import 'package:login_page/screens/login_form.dart';
-import 'package:login_page/screens/token_generator.dart';
+import 'package:login_page/screens/screens.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeForm extends StatefulWidget {
@@ -157,13 +155,15 @@ class _HomeFormState extends State<HomeForm> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-
+                  SizedBox(
+                    height: 240,
+                  ),
                   Container(
                     margin: EdgeInsets.all(30.0),
                     width: double.infinity,
                     child: TextButton(
                       child: Text(
-                        'Generar Token',
+                        'Ir a generar token de validación',
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {

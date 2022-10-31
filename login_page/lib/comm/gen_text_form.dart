@@ -31,17 +31,16 @@ class getTextFormField extends StatelessWidget {
           if (value == null || value.isEmpty) {
             return 'Por favor ingresa tu $hintName';
           }
-          if (hintName == "Email" && validateEmail(value)) {
-            return 'Por favor ingresa un mail válido';
-          }
-          if (hintName == "Passwprd" && validatePassword(value)) {
-            return 'La contraseña debe tener:';
-          }
+          // if (hintName == "Email" && validateEmail(value)) {
+          //   return 'Por favor ingresa un mail válido';
+          // }
+          // if (hintName == "Passwprd" && validatePassword(value)) {
+          //   return 'La contraseña debe tener:';
+          // }
           return null;
         },
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(30.0)),
             borderSide: BorderSide(color: Colors.transparent),
           ),
           focusedBorder: OutlineInputBorder(
