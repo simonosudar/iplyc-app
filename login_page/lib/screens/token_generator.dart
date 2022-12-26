@@ -41,7 +41,6 @@ class _CounterScreenState extends State<CounterScreen> {
   String _counter = " ";
   var minutoinicio = DateTime.now().minute; //minuto inicial
   int segundoinicio = DateTime.now().second; //segundo inicial
-  final int _duration = 60;
 
   @override
   Widget build(BuildContext context) {
