@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:login_page/comm/comm.dart';
-import 'package:login_page/database_helper/db_helper.dart';
-import 'package:login_page/model/user_model.dart';
-import 'package:login_page/screens/screens.dart';
+import 'package:Iplyc/comm/comm.dart';
+import 'package:Iplyc/database_helper/db_helper.dart';
+import 'package:Iplyc/model/user_model.dart';
+import 'package:Iplyc/screens/reset_password.dart';
+import 'package:Iplyc/screens/screens.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -24,6 +25,7 @@ class _LoginFormState extends State<LoginForm> {
   void initState() {
     super.initState();
     dbHelper = DbHelper();
+    dbHelper.initDb();
   }
 
   login() async {
@@ -84,6 +86,34 @@ class _LoginFormState extends State<LoginForm> {
     sp.setString("password", user.password);
   }
 
+  Future<void> _singupVisitor() async {
+    UserModel uModel =
+        UserModel('1111111', 'Invitado', 'invitado@email.com', '1234');
+    final SharedPreferences sp = await _pref;
+    var id = sp.getString('user_id');
+    if (id == '1111111') {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => HomeForm()),
+          (Route<dynamic> route) => false);
+    } else {
+      await dbHelper.saveData(uModel).then((userData) {
+        Fluttertoast.showToast(
+            msg: "Usuario de invitado generado",
+            textColor: Colors.white,
+            backgroundColor: Color.fromRGBO(43, 78, 116, 1),
+            gravity: ToastGravity.CENTER,
+            toastLength: Toast.LENGTH_LONG);
+        setSP(uModel).whenComplete(() {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => HomeForm()),
+              (Route<dynamic> route) => false);
+        });
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +140,7 @@ class _LoginFormState extends State<LoginForm> {
                 getTextFormField(
                     controller: _conUserId,
                     icon: Icons.person,
-                    hintName: 'Número de DNI'),
+                    hintName: 'Número de registro'),
                 SizedBox(height: 10.0),
                 getTextFormField(
                   controller: _conPassword,
@@ -145,10 +175,25 @@ class _LoginFormState extends State<LoginForm> {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (_) => SignupForm()));
                         },
-                      )
+                      ),
                     ],
                   ),
                 ),
+                TextButton(
+                  child: Text('¿Olvidaste tu contraseña?',
+                      style: TextStyle(color: HexColor('29527A'))),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => ResetPassword()));
+                  },
+                ),
+                TextButton(
+                  child: Text('Acceder como invitado',
+                      style: TextStyle(color: HexColor('29527A'))),
+                  onPressed: () {
+                    _singupVisitor();
+                  },
+                )
               ],
             ),
           ),

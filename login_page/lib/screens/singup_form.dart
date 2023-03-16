@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:login_page/comm/comm.dart';
-import 'package:login_page/database_helper/db_helper.dart';
-import 'package:login_page/model/user_model.dart';
-import 'package:login_page/screens/screens.dart';
+import 'package:Iplyc/comm/comm.dart';
+import 'package:Iplyc/database_helper/db_helper.dart';
+import 'package:Iplyc/model/user_model.dart';
+import 'package:Iplyc/screens/screens.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class SignupForm extends StatefulWidget {
@@ -101,7 +101,7 @@ class _SignupFormState extends State<SignupForm> {
                   getTextFormField(
                       controller: _conUserId,
                       icon: Icons.person,
-                      hintName: 'Número de DNI'),
+                      hintName: 'Número de registro'),
                   SizedBox(height: 10.0),
                   getTextFormField(
                       controller: _conUserName,

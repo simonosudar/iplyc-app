@@ -29,14 +29,11 @@ class getTextFormField extends StatelessWidget {
         keyboardType: inputType,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Por favor ingresa tu $hintName';
+            return 'Por favor ingresa $hintName';
           }
-          // if (hintName == "Email" && validateEmail(value)) {
-          //   return 'Por favor ingresa un mail válido';
-          // }
-          // if (hintName == "Passwprd" && validatePassword(value)) {
-          //   return 'La contraseña debe tener:';
-          // }
+          if (hintName == "Password" && validatePassword(value)) {
+            return 'La contraseña debe contener 8 caracteres, una letra mayúscula, una minúscula y un número.';
+          }
           return null;
         },
         decoration: InputDecoration(

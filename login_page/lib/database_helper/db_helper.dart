@@ -1,4 +1,4 @@
-import 'package:login_page/model/user_model.dart';
+import 'package:Iplyc/model/user_model.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -56,6 +56,14 @@ class DbHelper {
 
   Future<int> updateUser(UserModel user) async {
     var dbClient = await db;
+    var res = await dbClient.update(Table_User, user.toMap(),
+        where: '$C_UserID = ?', whereArgs: [user.user_id]);
+    return res;
+  }
+
+  Future<int> updatePassword(UserModel user, String newPassword) async {
+    var dbClient = await db;
+    user.password = newPassword;
     var res = await dbClient.update(Table_User, user.toMap(),
         where: '$C_UserID = ?', whereArgs: [user.user_id]);
     return res;

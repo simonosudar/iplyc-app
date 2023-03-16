@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math';
-import 'package:login_page/screens/home_form.dart';
-import 'package:login_page/database_helper/db_helper.dart';
+import 'package:Iplyc/screens/home_form.dart';
+import 'package:Iplyc/database_helper/db_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CounterScreen extends StatefulWidget {
@@ -21,7 +21,6 @@ class _CounterScreenState extends State<CounterScreen> {
   void initState() {
     super.initState();
     getId();
-
     dbHelper = DbHelper();
   }
 

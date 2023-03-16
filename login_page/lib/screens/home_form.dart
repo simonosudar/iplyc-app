@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:login_page/comm/comm.dart';
-import 'package:login_page/database_helper/db_helper.dart';
-import 'package:login_page/model/user_model.dart';
-import 'package:login_page/screens/screens.dart';
+import 'package:Iplyc/comm/comm.dart';
+import 'package:Iplyc/database_helper/db_helper.dart';
+import 'package:Iplyc/model/user_model.dart';
+import 'package:Iplyc/screens/screens.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeForm extends StatefulWidget {
@@ -133,7 +133,7 @@ class _HomeFormState extends State<HomeForm> {
                       controller: _conUserId,
                       isEnable: false,
                       icon: Icons.person,
-                      hintName: 'Número de DNI'),
+                      hintName: 'Número de registro'),
                   SizedBox(height: 10.0),
                   getTextFormField(
                       controller: _conUserName,
@@ -156,7 +156,7 @@ class _HomeFormState extends State<HomeForm> {
                     ),
                   ),
                   SizedBox(
-                    height: 240,
+                    height: 200,
                   ),
                   Container(
                     margin: EdgeInsets.all(30.0),
